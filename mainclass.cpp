@@ -16,6 +16,14 @@ ostream& operator<<(ostream& os, const Transport& t) {
     t.out(os);
     return os;
 }
+
+void Car::in(istream& is) {
+    is >> number >> wheels >> ageLimit >> mark;
+}
+void Car::out(ostream& os) const {
+    os << "Number: " << number << "\tWheels: " << wheels << "\tAgeLimit: " << ageLimit << "\tMark: " << mark;
+}
+
 void Bike::in(istream& is) {
     is >> number >> wheels >> ageLimit >> model;
 }
@@ -97,6 +105,7 @@ void Bolt::in(istream& is) {
 void Bolt::out(ostream& os) const {
     os << "Number: " << number << "\tWheels: " << wheels << "\tAgeLimit: " << ageLimit << "\tTime: " << time;
 }
+
 void displayBolt(const string namefile, Bolt* b, int count) {
     ofstream output(namefile, ios::app);
     if (!output.is_open()) {
@@ -110,6 +119,43 @@ void displayBolt(const string namefile, Bolt* b, int count) {
 
     output.close();
 }
+
+Car* setCar(const string namefile, int& count) {
+    ifstream input(namefile);
+    if (!input.is_open()) {
+        cout << "Error opening file!" << endl;
+        exit(0);
+    }
+
+    input.ignore(1000, '-');
+
+    input >> count;
+    Car* cars = new Car[count];
+
+    for (size_t i = 0; i < count; i++) {
+        input >> cars[i];
+    }
+
+    input.close();
+
+    return cars;
+}
+
+void displayCar(const string namefile, Car* c, int count)
+{
+    ofstream output(namefile, ios::app);
+    if (!output.is_open()) {
+        cout << "Error opening file!" << endl;
+        exit(0);
+    }
+
+    for (size_t i = 0; i < count; i++) {
+        output << c[i] << endl;
+    }
+
+    output.close();
+}
+
 void Taxi::in(istream& is) {
     is >> number >> wheels >> ageLimit >> price;
 }

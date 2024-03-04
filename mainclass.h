@@ -39,6 +39,22 @@ public:
     friend istream& operator>>(istream& is, Transport& t);
     friend ostream& operator<<(ostream& os, const Transport& t);
 };
+
+class Car : public Transport {
+private:
+    string mark;
+public:
+    Car() : Transport(), mark("-") {}
+    Car(string num, size_t whe, int agel, string mar) : Transport(num, whe, agel), mark(mar) {}
+
+    string getMark() const {
+        return mark;
+    }
+
+    void in(istream&) override;
+    void out(ostream&) const override;
+};
+
 class Bike : public Transport {
 private:
     string model;
@@ -81,6 +97,10 @@ public:
     void in(istream&) override;
     void out(ostream&) const override;
 };
+
+Car* setCar(const string namefile, int& count);
+void displayCar(const string namefile, Car* c, int count);
+
 Taxi* setTaxi(const string namefile, int& count);
 void displayTaxi(const string namefile, Taxi* t, int count);
 Bolt* setBolt(const string namefile, int& count);
