@@ -1,0 +1,12 @@
+-
+2 
+BC0010AA 1 2 RSQ8 
+BC0100BB 3 4 RS7
++
+3 
+gfdgfd 5 6 vsew 
+rbtrrt 8 9 vrev
+vrerew 2 8 vrer
+=
+1
+ewvwe 1 9 3232
