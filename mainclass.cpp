@@ -110,3 +110,42 @@ void displayBolt(const string namefile, Bolt* b, int count) {
 
     output.close();
 }
+void Taxi::in(istream& is) {
+    is >> number >> wheels >> ageLimit >> price;
+}
+void Taxi::out(ostream& os) const {
+    os << "Number: " << number << "\tWheels: " << wheels << "\tAgeLimit: " << ageLimit << "\tPrice: " << price;
+}
+Taxi* setTaxi(const string namefile, int& count) {
+    ifstream input(namefile);
+    if (!input.is_open()) {
+        cout << "Error opening file!" << endl;
+        exit(0);
+    }
+
+    input.ignore(1000, '=');
+
+    input >> count;
+    Taxi* taxes = new Taxi[count];
+
+    for (size_t i = 0; i < count; i++) {
+        input >> taxes[i];
+    }
+
+    input.close();
+
+    return taxes;
+}
+void displayTaxi(const string namefile, Taxi* t, int count) {
+    ofstream output(namefile, ios::app);
+    if (!output.is_open()) {
+        cout << "Error opening file!" << endl;
+        exit(0);
+    }
+
+    for (size_t i = 0; i < count; i++) {
+        output << t[i] << endl;
+    }
+
+    output.close();
+}

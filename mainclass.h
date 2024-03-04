@@ -67,6 +67,22 @@ public:
     void in(istream&) override;
     void out(ostream&) const override;
 };
+class Taxi : public Transport {
+private:
+    double price;
+public:
+    Taxi() : Transport(), price(0) {}
+    Taxi(string num, size_t whe, int agel, int pr) : Transport(num, whe, agel), price(pr) {}
+
+    double getMark() const {
+        return price;
+    }
+
+    void in(istream&) override;
+    void out(ostream&) const override;
+};
+Taxi* setTaxi(const string namefile, int& count);
+void displayTaxi(const string namefile, Taxi* t, int count);
 Bolt* setBolt(const string namefile, int& count);
 void displayBolt(const string namefile, Bolt* b, int count);
 
