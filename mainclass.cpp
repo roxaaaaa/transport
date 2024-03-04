@@ -106,19 +106,7 @@ void Bolt::out(ostream& os) const {
     os << "Number: " << number << "\tWheels: " << wheels << "\tAgeLimit: " << ageLimit << "\tTime: " << time;
 }
 
-void displayBolt(const string namefile, Bolt* b, int count) {
-    ofstream output(namefile, ios::app);
-    if (!output.is_open()) {
-        cout << "Error opening file!" << endl;
-        exit(0);
-    }
 
-    for (size_t i = 0; i < count; i++) {
-        output << b[i] << endl;
-    }
-
-    output.close();
-}
 
 Car* setCar(const string namefile, int& count) {
     ifstream input(namefile);
