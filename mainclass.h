@@ -39,3 +39,21 @@ public:
     friend istream& operator>>(istream& is, Transport& t);
     friend ostream& operator<<(ostream& os, const Transport& t);
 };
+class Bike : public Transport {
+private:
+    string model;
+public:
+    Bike() : Transport(), model("-") {}
+    Bike(string num, size_t whe, int agel, string mo) : Transport(num, whe, agel), model(mo) {}
+
+    string getMark() const {
+        return model;
+    }
+
+    void in(istream&) override;
+    void out(ostream&) const override;
+};
+
+
+Bike* setBike(const string namefile, int& count);
+void displayBike(const string namefile, Bike* b, int count);
