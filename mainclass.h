@@ -53,7 +53,22 @@ public:
     void in(istream&) override;
     void out(ostream&) const override;
 };
+class Bolt : public Transport {
+private:
+    int time;
+public:
+    Bolt() : Transport(), time(0) {}
+    Bolt(string num, size_t whe, int agel, int ti) : Transport(num, whe, agel), time(ti) {}
 
+    int getMark() const {
+        return time;
+    }
+
+    void in(istream&) override;
+    void out(ostream&) const override;
+};
+Bolt* setBolt(const string namefile, int& count);
+void displayBolt(const string namefile, Bolt* b, int count);
 
 Bike* setBike(const string namefile, int& count);
 void displayBike(const string namefile, Bike* b, int count);
