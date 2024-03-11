@@ -14,6 +14,7 @@ public:
     Transport(string num, size_t whe, int agel) : number(num), wheels(whe), ageLimit(agel) {}
 
     string getNumber() const {
+        cout << number << endl;
         return number;
     }
     size_t getWheels() const {
